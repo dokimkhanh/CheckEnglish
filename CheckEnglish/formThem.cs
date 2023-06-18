@@ -72,11 +72,12 @@ namespace CheckEnglish
                 return;
             }
 
-            var sql = $"INSERT INTO cauhoi(id,noidung,awA,awB,awC,awD,awCorrect) VALUES (NULL, @noidung, @a, @b, @c, @d, @correct);";
+            var sql = $"INSERT INTO cauhoi(id,made,noidung,awA,awB,awC,awD,awCorrect) VALUES (NULL, @made, @noidung, @a, @b, @c, @d, @correct);";
             try
             {
                 conn.Open();
                 var cmd = new SQLiteCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@made", txtMaDe.Text);
                 cmd.Parameters.AddWithValue("@noidung", txtCauhoi.Text);
                 cmd.Parameters.AddWithValue("@a", txtA.Text);
                 cmd.Parameters.AddWithValue("@b", txtB.Text);
